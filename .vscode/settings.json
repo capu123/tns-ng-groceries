@@ -7,6 +7,6 @@
         "**/package.json": false,  
         "hooks/": true,  
         "platforms": false,  
-        "node_modules": true
+        "node_modules": false
     }
 }

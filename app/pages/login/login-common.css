@@ -5,6 +5,7 @@ StackLayout {
   background-color: white;
 
   margin-top: 60;
+  margin-bottom: 250;
 }
 Image {
   margin-top: 5;
