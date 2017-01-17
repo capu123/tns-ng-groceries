@@ -1,0 +1,17 @@
+ListView {
+  opacity: 0;
+
+  background-color: lightpink;
+}
+.visible {
+  animation-name: show;
+  animation-duration: 1s;
+}
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+ActivityIndicator {
+    background-color: orangered;
+}
