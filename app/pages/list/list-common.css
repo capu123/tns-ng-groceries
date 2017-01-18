@@ -1,7 +1,5 @@
 ListView {
   opacity: 0;
-
-  background-color: lightpink;
 }
 .visible {
   animation-name: show;

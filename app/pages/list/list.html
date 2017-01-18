@@ -1,20 +1,23 @@
 <ActionBar title="Groceries">
   <ActionItem text="Share" (tap)="share()" android.systemIcon="ic_menu_share_holo_dark" ios.systemIcon="9" ios.position="right"></ActionItem>
 </ActionBar>
-<GridLayout rows="auto, *">
+<GridLayout rows="auto, auto, auto, *" style.marginTop="35">
   <GridLayout row="0" columns="*, auto" class="add-bar">
     <TextField #groceryTextField [(ngModel)]="grocery" hint="Enter a grocery item" col="0"></TextField>
     <Image src="~/images/add.png" (tap)="add()" col="1" class="plus"></Image>
   </GridLayout>
 
-  <ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
+  <ActivityIndicator [busy]="isLoading" row="1" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center" style="color: red;"></ActivityIndicator>
+
+  <Label text="Your's list of groceries:" row="2" style.marginLeft="15" style.color="#f96816"> </Label>
+      
+  <ListView [items]="groceryList" row="3" class="small-spacing" [class.visible]="listLoaded">
     <template let-item="item">
       <Label [text]="item.name" class="medium-spacing"></Label>
+      
     </template>
   </ListView>
 
-  <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center" style="color: black;"></ActivityIndicator>
-  
 </GridLayout>
 
 

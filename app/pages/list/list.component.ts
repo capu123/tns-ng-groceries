@@ -22,6 +22,7 @@ export class ListComponent implements OnInit {
   groceryList: Array<Grocery> = [];
   grocery = "";
   @ViewChild("groceryTextField") groceryTextField: ElementRef;
+  @ViewChild("statusbar") statusbar: ElementRef;
 
   isLoading = false;
   listLoaded = false;
