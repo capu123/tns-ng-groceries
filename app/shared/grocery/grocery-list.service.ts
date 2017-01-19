@@ -5,6 +5,7 @@ import "rxjs/add/operator/map";
 
 //import { Config } from "../config";
 import { Grocery } from "./grocery";
+import { User } from "../user/user";
 
 /*
 @Injectable()
@@ -42,6 +43,8 @@ export class GroceryListService {
   groceryList: Array<Grocery> = [];
 
   groceryId: number = 20;
+
+  private grocery: Grocery;
 
   constructor(private http: Http) {
       /*
@@ -101,6 +104,29 @@ export class GroceryListService {
   .catch(this.handleErrors);
 }
 
+delete(id: string) {
+  let headers = new Headers();
+  headers.append("Authorization", "Bearer " + Config.token);
+  headers.append("Content-Type", "application/json");
+
+  return this.http.delete(
+    Config.apiUrl + "Groceries/" + id,
+    { headers: headers }
+  )
+  .map(res => res.json())
+  .catch(this.handleErrors);
+}
+
   */
+
+  delete(id: string){
+      var elementPos = this.groceryList.map(function(x) {return x.id; }).indexOf(id);
+      var objectFound = this.groceryList[elementPos];
+
+      console.log(objectFound.name + " has been deleted!");
+      this.groceryList.splice((this.groceryList.indexOf(objectFound)),1);
+      //return this.groceryList;
+   }
+  
 
 }

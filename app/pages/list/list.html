@@ -11,13 +11,24 @@
 
   <Label text="Your's list of groceries:" row="2" style.marginLeft="15" style.color="#f96816"> </Label>
       
+  <!--
   <ListView [items]="groceryList" row="3" class="small-spacing" [class.visible]="listLoaded">
     <template let-item="item">
       <Label [text]="item.name" class="medium-spacing"></Label>
-      
     </template>
   </ListView>
+  -->
 
+  <ListView [items]="groceryList" row="3" class="small-spacing" [class.visible]="listLoaded">
+    <template let-item="item">
+      <GridLayout columns="*, auto" style.margin="13">
+        <Label col="0" [text]="item.name"></Label>
+         <!--<Image src="~/images/delete.png" class="plus"></Image>  -->
+        <Label #deleteLabel text="X" col="1" (tap)="delete(item)"></Label>
+        
+      </GridLayout>
+    </template>
+  </ListView>
 </GridLayout>
 
 

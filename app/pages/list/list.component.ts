@@ -7,6 +7,9 @@ import { Grocery } from "../../shared/grocery/grocery";
 import { GroceryListService } from "../../shared/grocery/grocery-list.service";
 
 import { TextField } from "ui/text-field";
+//import { Label } from "ui/label";
+//import { Color } from "color";
+import dialogs = require("ui/dialogs");
 
 import * as SocialShare from "nativescript-social-share";
 
@@ -22,7 +25,7 @@ export class ListComponent implements OnInit {
   groceryList: Array<Grocery> = [];
   grocery = "";
   @ViewChild("groceryTextField") groceryTextField: ElementRef;
-  @ViewChild("statusbar") statusbar: ElementRef;
+  @ViewChild("statusbar") statusbar: ElementRef; 
 
   isLoading = false;
   listLoaded = false;
@@ -96,5 +99,23 @@ export class ListComponent implements OnInit {
         let listString = list.join(", ").trim();
         SocialShare.shareText(listString);
     }
+
+   delete(item: Grocery){
+       var dialogs = require("ui/dialogs");
+       var gListService = this.groceryListService;
+            dialogs.action({
+                message: "Do you want to delete "+ item.name +"?" ,
+                cancelButtonText: "Cancel text",
+                actions: ["Yes", "Not now"]
+            }).then(
+                function (result) {
+                    if (result === "Yes"){
+                        console.log("User pressed---> " + result);
+                        gListService.delete(item.id); 
+                    }  
+                }
+            );
+       //this.groceryList = this.groceryListService.delete(item.id);   
+   }
 
 }
